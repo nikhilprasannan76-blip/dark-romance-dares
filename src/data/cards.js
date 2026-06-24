@@ -56,6 +56,5 @@ export const cards = [
   "{partner}, initiate a 'quickie' where the entire encounter—from clothing removal to penetration—must be executed with chaotic energy in under 2 minutes.",
   "{user}, let {partner} lock their fingers tightly with yours, pinning your hands into the mattress while they kiss you breathless for 15 seconds.",
   "{partner}, spend 20 seconds exploring a part of {user}'s body with your tongue that you usually skip over during foreplay.",
-  "{user}, continue whatever sexual act you are doing, but keep your eyes completely locked onto {partner}'s eyes for 30 seconds without looking away once.",
   "{partner}, look at {user}, demand that they 'take what is theirs right now,' and surrender your body completely to their rhythm."
 ];

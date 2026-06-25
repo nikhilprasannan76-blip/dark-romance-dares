@@ -46,20 +46,33 @@ function App() {
       .replaceAll("{partner}", partner);
   };
 
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+ useEffect(() => {
+  const saved = localStorage.getItem(STORAGE_KEY);
 
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      setNames(parsed.names || { user: "", partner: "" });
-      setDeck(parsed.deck || shuffleCards());
-      setCurrentCard(parsed.currentCard || null);
-      setCardNumber(parsed.cardNumber || 0);
-      setScreen(parsed.screen || "intro");
-    } else {
+  if (saved) {
+    const parsed = JSON.parse(saved);
+
+    const savedCardNumber = parsed.cardNumber || 0;
+    const savedDeck = parsed.deck || [];
+
+    if (savedCardNumber >= cards.length || savedDeck.length > cards.length) {
+      localStorage.removeItem(STORAGE_KEY);
       setDeck(shuffleCards());
+      setCardNumber(0);
+      setCurrentCard(null);
+      setScreen("intro");
+      return;
     }
-  }, []);
+
+    setNames(parsed.names || { user: "", partner: "" });
+    setDeck(savedDeck.length ? savedDeck : shuffleCards());
+    setCurrentCard(parsed.currentCard || null);
+    setCardNumber(savedCardNumber);
+    setScreen(parsed.screen || "intro");
+  } else {
+    setDeck(shuffleCards());
+  }
+}, []);
 
   useEffect(() => {
     const data = {
